@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+ 
+    <h2>Logowanie użytkownika:</h2>
+
+    <form action="/dashboard" method="post">
+        <label for="username">Nazwa użytkownika:</label><br>
+        <input type="text" id="username" name="username" value="Default"><br>
+        <label for="pwd">Hasło:</label><br>
+        <input type="password" id="pwd" name="pwd"><br>
+
+        <div class="dropdown">
+            <label for="dropdown">Dział:</label><br>
+            <select name="dropdown">
+                <option value="produkcja">Produkcja</option>
+                <option value="jakość">Kontrola jakości</option>
+                <option value="logistyka">Logistyka</option>
+            </select>
+        </div>
+        <br />
+        <input type="submit" value="Zatwierdź"><br>
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <br />
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+    </form>
+</div>

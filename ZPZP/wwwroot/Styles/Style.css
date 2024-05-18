@@ -1,0 +1,146 @@
+﻿html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 60%;
+    font-family: 'Trebuchet MS', 'Arial', 'Helvetica', 'sans-serif';
+    font-size: 10pt;
+    background-color: LightGray;
+    line-height: 1.6em;
+}
+
+h1 {
+    font-size: 1.6em;
+    text-align: center;
+
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+    left: 10%;
+}
+
+#header {
+    padding: 8px;
+    width: 80%;
+    background-color: #4b6c9e;
+    color: White;
+}
+
+#main {
+    width: 80%;
+    padding: 8px;
+    padding-bottom: 4em;
+    background-color: White;
+}
+
+#footer {
+    width: 80%;
+    height: 2em;
+    padding: 8px;
+    margin-top: -2em;
+    background-color: LightGray;
+}
+
+.head {
+    background-color: #E8E8E8;
+    font-weight: bold;
+    color: #FFF;
+    
+}
+
+.grid th, .grid td {
+    border: 1px solid #C0C0C0;
+    padding: 5px;
+}
+
+.alt {
+    background-color: #E8E8E8;
+    color: #000;
+}
+
+.selected {
+    background-color: Yellow;
+}
+
+span.caption {
+    width: 100px;
+}
+
+span.dataDisplay {
+    font-weight: bold;
+}
+container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+dropdown:hover .dropdown-content {
+    display: block;
+}
+form > * {
+    margin-bottom: 10px;
+}
+/* AdminLayout */
+
+.btn-group button {
+    background-color: #04AA6D; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+
+
