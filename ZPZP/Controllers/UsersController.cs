@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 using ZPZP.Data;
 using ZPZP.Models;
 
@@ -13,6 +14,7 @@ namespace ZPZP.Controllers
         {
             _appDbContext = appDbContext;
         }
+
         [Route("/dashboard")]
         [HttpPost]
         public IActionResult Authorization(string username, string pwd, string dropdown)
@@ -30,6 +32,7 @@ namespace ZPZP.Controllers
                 ViewBag.Surname = admin.Surname;
                 ViewBag.Email = admin.Email;
                 ViewBag.PhoneNumber = admin.PhoneNumber;
+                ViewBag.Password = admin.UserPassword;
 
 
                 switch (dropdown)
@@ -62,10 +65,9 @@ namespace ZPZP.Controllers
                 }
             }
             else
-            ViewBag.ErrorMessage = "Nieprawidłowe dane logowania lub wybrany dział.";
+                ViewBag.ErrorMessage = "Nieprawidłowe dane logowania lub wybrany dział.";
             return View("~/Views/Home/Index.cshtml");
         }
-
     }
 }
 
