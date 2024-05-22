@@ -29,6 +29,10 @@
                 @ViewBag.ErrorMessage
             </div>
         }
+        @if (ViewBag.Message != null)
+        {
+            <p>@ViewBag.Message</p>
+        }
 
     </form>
 </div>

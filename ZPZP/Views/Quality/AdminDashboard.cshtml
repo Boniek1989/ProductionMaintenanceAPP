@@ -27,9 +27,31 @@
                 <p class="title"><span>@ViewBag.UserLevel</span> działu <span>@ViewBag.Category</span></p>
                 <p class="title"><span>@ViewBag.Email</span></p>
                 <p><span>@ViewBag.PhoneNumber</span></p>
-            </div>
-        </div>
+            </div>   
+         </div>
     </div>
-</div>
 
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    @if (imageBytes != null)
+                    {
+                        <img src="data:image;base64,@Convert.ToBase64String(imageBytes)" alt="Obrazek" style="width:100%">
+                    }
+                    else
+                    {
+                        <p>Brak obrazka</p>
+                    }
 
+                    <div class="container">
+                        <h1>Zalogowano jako <span>@ViewBag.Username</span></h1>
+                        <h2> <span>@ViewBag.Name</span> <span>@ViewBag.Surname</span></h2>
+                        <p class="title"><span>@ViewBag.UserLevel</span> działu <span>@ViewBag.Category</span></p>
+                        <p class="title"><span>@ViewBag.Email</span></p>
+                        <p><span>@ViewBag.PhoneNumber</span></p>
+                    </div>
+             </div>
+       </div>
+ </div>
+ 
+ 

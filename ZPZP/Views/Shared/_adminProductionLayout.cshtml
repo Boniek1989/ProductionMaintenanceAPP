@@ -2,28 +2,7 @@
 <html>
 <head>
     <title>ZPZP</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var userImage = '@ViewBag.Image';
-            var userPassword = '@ViewBag.Password';
-
-            $.ajax({
-                url: '@Url.Action("Settings", "ProductionController")',
-                type: 'POST',
-                data: {
-                    userImage: userImage,
-                    userPassword: userPassword
-                },
-                success: function (response) {
-                    console.log('Data sent successfully:', response);
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error sending data:', status, error);
-                }
-            });
-        }); //AJAX - important to send view + values for controller
-    </script>
+    
     <link href="/Styles/Style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

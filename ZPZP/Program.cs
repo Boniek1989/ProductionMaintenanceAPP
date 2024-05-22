@@ -1,23 +1,27 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 using ZPZP.Data;
 
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddControllers();
-builder.Services.AddMvc();
 
+// Dodajemy obs³ugê DbContext
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))); // add DbContext
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+
+
 var app = builder.Build();
-
-
 
 app.UseStaticFiles();
 app.UseRouting();
+
 app.MapControllers();
 
-
 app.Run();
-
-// use nugget packet console - add-migration
-// update-database
