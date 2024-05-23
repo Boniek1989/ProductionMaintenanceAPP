@@ -6,7 +6,7 @@
     <link href="/Styles/StyleAdmin.css" rel="stylesheet" type="text/css" />
   
 </head>
-<br />
+<center>
 <div class="row">
     <div class="column">
         <div class="card">
@@ -31,45 +31,7 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="column">
-            <div class="container">
-                <form action="/dashboard/settings-password" method="post">
-                    <div>
-                        <label for="newPwd">Wprowadź nowe hasło:</label>
-                        <input type="password" id="newPwd" name="newPwd" />
-                    </div>
-                    <div>
-                    <input type="hidden" name="userID" value="@ViewBag.ID" />
-                    </div>
-                        <div>
-                            <button type="submit">Zmień hasło</button>
-                        </div>
-                </form>
-
-
-                <form action="/dashboard/settings-image" method="post" enctype="multipart/form-data">
-                <div>
-                    <label for="file">Choose a photo:</label>
-                    <input type="file" id="file" name="file" accept="image/*" required />
-                </div>
-                <div>
-                    <input type="hidden" name="userID" value="@ViewBag.ID" />
-                </div>
-                <div>
-                    <button type="submit">Upload</button>
-                </div>
-                </form>
-
-
-            </div>
-            </div>
-        </div>
-
-
-
-
 </div>
+</center>
 
 

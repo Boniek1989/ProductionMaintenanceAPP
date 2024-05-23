@@ -30,9 +30,7 @@ namespace ZPZP.Controllers
             {
                 int ID = admin.ID;
 
-                
-
-                
+                TempData["ID"] = admin.ID;
                 ViewBag.Image = admin.Image;
                 ViewBag.Username = username;
                 ViewBag.UserLevel = "Kierownik";
@@ -78,7 +76,7 @@ namespace ZPZP.Controllers
                 ViewBag.ErrorMessage = "Nieprawidłowe dane logowania lub wybrany dział.";
             return View("~/Views/Home/Index.cshtml");
         }
- 
+
 
         //  [HttpPost]
         //  public async Task<IActionResult> EditImage(IFormFile file, int userID, int ID)
@@ -101,6 +99,18 @@ namespace ZPZP.Controllers
 
         //     return Ok(user);
         //  }
+        
+        [Route("dashboard/settings")]
+        public IActionResult Settings ()
+        {
+            if (TempData["ID"] != null)
+            {
+                ViewBag.ID = TempData["ID"];
+                return View("~/Views/Production/AdminSettings.cshtml");
+            }
+            else
+                return View("dupa");
+        }
 
         [HttpPost]
         [Route("dashboard/settings-password")]

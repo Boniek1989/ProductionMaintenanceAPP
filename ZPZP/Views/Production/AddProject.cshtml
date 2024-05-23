@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminProductionLayout.cshtml";
+}
+<head>
+    <title>ZPZP</title>
+    <link href="/Styles/StyleAdmin.css" rel="stylesheet" type="text/css" />
+
+</head>
+<form action="/dashboard" method="post">
+    <label for="username">Nazwa użytkownika:</label><br>
+    <input type="text" id="username" name="username" value="Default"><br>
+    <label for="pwd">Hasło:</label><br>
+    <input type="password" id="pwd" name="pwd"><br>
+
+    <div class="dropdown">
+        <label for="dropdown">Dział:</label><br>
+        <select name="dropdown">
+            <option value="produkcja">Produkcja</option>
+            <option value="jakość">Kontrola jakości</option>
+            <option value="logistyka">Logistyka</option>
+        </select>
+    </div>
+    <br />
+    <input type="submit" value="Zatwierdź"><br>
