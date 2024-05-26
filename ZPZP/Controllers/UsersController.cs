@@ -8,6 +8,7 @@ using ZPZP.Models;
 
 namespace ZPZP.Controllers
 {
+    [Route("dashboard")]
     public class UsersController : Controller
     {
         private readonly AppDbContext _appDbContext;
@@ -19,7 +20,7 @@ namespace ZPZP.Controllers
           
         }
 
-        [Route("/dashboard")]
+        [Route("home")]
         [HttpPost]
         public IActionResult Authorization(string username, string pwd, string dropdown)
         {
@@ -100,7 +101,7 @@ namespace ZPZP.Controllers
         //     return Ok(user);
         //  }
         
-        [Route("dashboard/settings")]
+        [Route("settings")]
         public IActionResult Settings ()
         {
             if (TempData["ID"] != null)
@@ -109,11 +110,13 @@ namespace ZPZP.Controllers
                 return View("~/Views/Production/AdminSettings.cshtml");
             }
             else
-                return View("dupa");
+
+            ViewBag.Message = "Sesja wygasła - wymagane ponowne logowanie";
+            return View("~/Views/Home/Index.cshtml");
         }
 
         [HttpPost]
-        [Route("dashboard/settings-password")]
+        [Route("settings-password")]
         public async Task<IActionResult> EditPassword(string newPwd, int userID)
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(u => u.ID == userID);
@@ -127,7 +130,7 @@ namespace ZPZP.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
         [HttpPost]
-        [Route("dashboard/settings-image")]
+        [Route("settings-image")]
         public async Task<IActionResult> EditImage(IFormFile file, int userID)
         {
             if (file == null || file.Length == 0)

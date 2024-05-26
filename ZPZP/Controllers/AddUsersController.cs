@@ -20,7 +20,7 @@ namespace ZPZP.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<IActionResult> AddUsers([FromForm] string userName, [FromForm] string userPassword, [FromForm] string userDomain, [FromForm] string userLevel, [FromForm] string name, [FromForm] string surname, [FromForm] string email, [FromForm] IFormFile imageFile, [FromForm] int phoneNumber)
+        public async Task<IActionResult> AddUsers([FromForm] string userName, [FromForm] string userPassword, [FromForm] string userCategory, [FromForm] string userDomain, [FromForm] string userLevel, [FromForm] string name, [FromForm] string surname, [FromForm] string email, [FromForm] IFormFile imageFile, [FromForm] int phoneNumber)
         {
             Users user = new Users
             {
@@ -31,6 +31,7 @@ namespace ZPZP.Controllers
                 Surname = surname,
                 Email = email,
                 PhoneNumber = phoneNumber,
+                UserCategory = userCategory,
             };
 
             if (imageFile != null)
