@@ -12,12 +12,13 @@
             <div class="container">
                 <form action="/dashboard/addproject-add" method="post">
                     <label for="SerialNumber">Numer seryjny:</label>
-                    <input type="text" id="SerialNumber" name="SerialNumber" value="Eg. 12312"><br />
+                    <input type="text" id="SerialNumber" name="serialNumber" value="Eg. 12312"><br />
                     <label for="Name">Nazwa projektu: </label>
-                    <input type="text" id="Name" name="Name" value="Eg. Paczkomat"><br />
+                    <input type="text" id="Name" name="name" value="Eg. Paczkomat"><br />
                     <label for="documentation">Dokumentacja:</label>
                     <input type="file" id="file" name="file" accept="image/*" />
-                    <input type="hidden" name="userID" value="@ViewBag.ID" /><br />
+                    <input type="hidden" name="userID" value="@ViewBag.Surname" /><br />
+                    <input type="hidden" name="status" value="Zlecony" />
 
    
  

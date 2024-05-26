@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ZPZP.Migrations
 {
     /// <inheritdoc />
-    public partial class IntialMigration : Migration
+    public partial class InitMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +19,7 @@ namespace ZPZP.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    ProductID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SerialNumber = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -53,12 +54,22 @@ namespace ZPZP.Migrations
                     ProductionDocumentation = table.Column<byte[]>(type: "longblob", nullable: true),
                     QualityDocumentation = table.Column<byte[]>(type: "longblob", nullable: true),
                     LogisticsDocumentation = table.Column<byte[]>(type: "longblob", nullable: true),
+                    ProjectDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ProjectDateStart = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ProductionDateStart = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ProductionDateEnd = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    QualityDateAssigned = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    QualityWorkerDateStart = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    QualityWorkerDateEnd = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LogisticsWorkerDateAssigned = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LogisticsWorkerDateStart = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LogisticsWorkerDateEnd = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Status = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.ProductID);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 

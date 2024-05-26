@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminProductionLayout.cshtml";
+}
+<head>
+    <title>ZPZP</title>
+    <link href="/Styles/StyleAdmin.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+@if (ViewBag.Message != null)
+{
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <p>@ViewBag.Message</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

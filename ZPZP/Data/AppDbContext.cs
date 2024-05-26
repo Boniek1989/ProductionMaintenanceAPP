@@ -7,7 +7,7 @@ namespace ZPZP.Data
     {
         public AppDbContext(DbContextOptions options) : base(options) { }
         public DbSet<Users> Users { get; set; } // import namespace ctrl + .
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Products> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
