@@ -18,7 +18,10 @@
                     <label for="documentation">Dokumentacja:</label>
                     <input type="file" id="file" name="file" accept="image/*" />
                     <input type="hidden" name="userID" value="@ViewBag.Surname" /><br />
-                    <input type="hidden" name="status" value="Zlecony" />
+                    <input type="hidden" name="status" value="Zlecony" /> 
+                    <input type="hidden" name="date2" value=@ViewBag.TimeStamp /> 
+                    <label for="date">Data rozpoczęcia produkcji:</label>
+                    <input type="date" id="date" name="date" value="28-05-2005"><br />
 
    
  

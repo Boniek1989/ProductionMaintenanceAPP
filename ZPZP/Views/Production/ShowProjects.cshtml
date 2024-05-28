@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminProductionLayout.cshtml";
+}
+<head>
+    <title>ZPZP</title>
+    <link href="/Styles/StyleAdmin.css" rel="stylesheet" type="text/css" />
+
+</head>
+<div>
+    <center>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Numer porządkowy</th>
+                            <th>Numer seryjny</th>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                            <th>Pracownik przypisany</th>
+                            <th>Pracownik przypisany</th>
+                            <th>Pracownik przypisany</th>
+                            <th>Dokumentacja</th>
+                            <th>Data utworzenia</th>
+                            <th>Data startu produkcji</th>
+                            <th>Status</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var project in Model)
+                        {
+                            <tr>
+                                <td>@project.Id</td>
+                                <td>@project.SerialNumber</td>
+                                <td>@project.Name</td>
+                                <td>@project.DescriptionProduction</td>
+                                <td>@project.ProductionWorkerAssigned1</td>
+                                <td>@project.ProductionWorkerAssigned2</td>
+                                <td>@project.ProductionWorkerAssigned3</td>
+                                <td>@project.ProductionDocumentation</td>
+                                <td>@project.ProjectDate.ToString("yyyy-MM-dd")</td>
+                                <td>@project.ProjectDateStart.ToString("yyyy-MM-dd")</td>
+                                <td>@project.Status</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                </center>
+
+</div>
+
