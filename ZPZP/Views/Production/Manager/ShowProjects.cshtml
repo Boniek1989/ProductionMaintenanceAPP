@@ -1,0 +1,143 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminProductionLayout.cshtml";
+}
+<head>
+    <title>ZPZP</title>
+    <link href="/Styles/StyleAdmin.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<br />
+<div>
+    <center>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-serial';">Serial ID</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-name';">Nazwa</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-name';">Opis</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-person-one';">Pracownik</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-person-two';">Pracownik</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-person-three';">Pracownik</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-documentation';">Dokumentacja</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-projectdate';">Utworzono</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-projectdatestart';">Zlecono</button></th>
+                            <th><button onclick="window.location.href='/dashboard/production/manager/sort-by-status';">Status</button></th>
+                        </tr>
+                        <tr>
+                            <form id="serialForm" method="post" action="/dashboard/production/manager/find-serial">
+                                @Html.AntiForgeryToken()
+                                    <th>
+                                        <input style="width:40%" type="text" id="serial" name="serial" onkeypress="serialEnter" />
+                                    </th>
+                            </form>
+
+                            <form id="nameForm" method="post" action="/dashboard/production/manager/find-name">
+                                @Html.AntiForgeryToken()
+                                    <th>
+                                        <input style="width:40%" type="text" id="name" name="name" onkeypress="nameEnter" />
+                                    </th>
+                            </form>
+
+                            <form id="nameForm" method="post" action="/dashboard/production/manager/find-description">
+                                @Html.AntiForgeryToken()
+                                    <th>
+                                        <input style="width:40%" type="text" id="description" name="description" onkeypress="descriptionEnter" />
+                                    </th>
+                            </form>
+
+                            <form id="nameForm" method="post" action="/dashboard/production/manager/find-person-name"/>
+                                @Html.AntiForgeryToken()
+                                    <th>
+                                        <input style="width:40%" type="text" id="personName" name="personName" onkeypress="personNameEnter" />
+                                    </th>
+                            </form>
+
+                            <th><input style="width:40%" type="text" id="personone" name="personone" /></th>
+                            <th><input style="width:40%" type="text" id="personetwo" name="personetwo" /></th>
+                            <th><input style="width:40%" type="text" id="personthree" name="personethree" /></th>
+                            <th><input style="width:40%" type="text" id="documentation" name="documentation" /></th>
+                            <th><input style="width:40%" type="date" id="projectdate" name="projectdate" /></th>
+                            <th><input style="width:40%" type="date" id="projectdatestart" name="projectdatestart" /></th>
+                            <th><input style="width:40%" type="text" id="status" name="status" /></th>
+
+
+                    
+                        </tr>
+                    </thead>
+                    <tbody>
+            
+                   @if (Model.Count == 1)
+                    {
+                        var project = Model[0];
+                        <div>
+                            <tr>
+                                <td>@project.SerialNumber</td>
+                                <td>@project.Name</td>
+                                <td>@project.DescriptionProduction</td>
+                                <td>@project.ProductionWorkerAssigned1</td>
+                                <td>@project.ProductionWorkerAssigned2</td>
+                                <td>@project.ProductionWorkerAssigned3</td>
+                                <td>@project.ProductionDocumentation</td>
+                                <td>@project.ProjectDate.ToString("yyyy-MM-dd")</td>
+                                <td>@project.ProjectDateStart.ToString("yyyy-MM-dd")</td>
+                                <td>@project.Status</td>
+                            </tr>
+                        </div>
+                    }
+                    else
+                    {
+                    foreach (var project in Model)
+                    {
+                            <tr>
+                                <td>@project.SerialNumber</td>
+                                <td>@project.Name</td>
+                                <td>@project.DescriptionProduction</td>
+                                <td>@project.ProductionWorkerAssigned1</td>
+                                <td>@project.ProductionWorkerAssigned2</td>
+                                <td>@project.ProductionWorkerAssigned3</td>
+                                <td>@project.ProductionDocumentation</td>
+                                <td>@project.ProjectDate.ToString("yyyy-MM-dd")</td>
+                                <td>@project.ProjectDateStart.ToString("yyyy-MM-dd")</td>
+                                <td>@project.Status</td>
+                            </tr>
+                    }}
+                    
+                    </tbody>
+                </table>
+            @if (Model.Count == 0)
+            {
+                <center><h1>@ViewBag.Message</h1></center>
+            }
+                </center>
+
+</div>
+</body>
+<script>
+    function serialEnter {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu Entera
+            document.getElementById("serialForm").submit(); // Prześlij formularz
+        }
+    }
+    function nameEnter {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu Entera
+            document.getElementById("serialForm").submit(); // Prześlij formularz
+        }
+    }
+    function descriptionEnter {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu Entera
+            document.getElementById("serialForm").submit(); // Prześlij formularz
+        }
+    }
+    function personNameEnter {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Zapobiegaj domyślnemu zachowaniu Entera
+            document.getElementById("serialForm").submit(); // Prześlij formularz
+        }
+    }
+</script>
+
+                                 

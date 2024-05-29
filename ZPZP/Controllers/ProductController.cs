@@ -21,20 +21,20 @@ namespace ZPZP.Controllers
             _appDbContext = appDbContext;
 
         }
-        [Route("dashboard/addproject")]
+        [Route("dashboard/production/manager/addproject")]
         public async Task<ActionResult<IEnumerable<Users>>> AddProject()
         {
             var productionEmployees = await _appDbContext.Users.Where(u => u.UserCategory == "produkcja" && u.UserLevel == "pracownik").ToListAsync();
 
             string formattedDateOnly = DateTime.Now.ToString("yyyy-MM-dd");
 
-            ViewBag.ProductionEmployees = new SelectList(productionEmployees, "ID", "Surname");
+            ViewBag.ProductionEmployees = new SelectList(productionEmployees, "Id", "Surname");
             ViewBag.Timestamp = formattedDateOnly;
 
-            return View("~/Views/Production/AddProject.cshtml");
+            return View("~/Views/Production/Manager/AddProject.cshtml");
         }
         [HttpPost]
-        [Route("dashboard/addproject-add")]
+        [Route("dashboard/production/manager/addproject-add")]
         public async Task<IActionResult> StoreProject([FromForm] string? serialNumber, string? name, [FromForm] IFormFile file, string? dropdownOne, string? dropdownTwo, string? dropdownThree, string? Surname, DateTime date, DateTime date2, string? status)
         {
             //var EmployeeOne = _appDbContext.Users.FirstOrDefault(u => u.UserCategory == "produkcja" && u.UserLevel == "pracownik");
@@ -68,17 +68,57 @@ namespace ZPZP.Controllers
 
             ViewBag.Message = "Projekt o nazwie " + product.Name + " o numerze seryjnym " + product.SerialNumber + " został zlecony do produkcji.";
 
-            return View("~/Views/Production/AdminStatus.cshtml");
+            return View("~/Views/Production/Manager/AdminStatus.cshtml");
         }
         [HttpGet]
-        [Route("dashboard/showprojects")]
+        [Route("dashboard/production/manager/showprojects")]
         public IActionResult ShowAll() 
         {
             var projects = _appDbContext.Products.ToList();
-            
+            ViewBag.Message = "Brak rekordów w bazie danych, sprawdź pisownię.";
 
 
-            return View("~/Views/Production/ShowProjects.cshtml" , projects);
+            return View("~/Views/Production/Manager/ShowProjects.cshtml" , projects);
+        }
+        [HttpPost]
+        [Route("/dashboard/production/manager/find-serial")]
+        public IActionResult FindSerial(string serial)
+        {
+
+            var projects = _appDbContext.Products.Where(u => u.SerialNumber == serial).ToList();
+            ViewBag.Message = "Brak rekordów w bazie danych, sprawdź pisownię.";
+
+            return View("~/Views/Production/Manager/ShowProjects.cshtml", projects);
+        }
+        [HttpPost]
+        [Route("/dashboard/production/manager/find-name")]
+        public IActionResult FindName(string name)
+        {
+
+            var projects = _appDbContext.Products.Where(u => u.Name == name).ToList();
+            ViewBag.Message = "Brak rekordów w bazie danych, sprawdź pisownię.";
+
+            return View("~/Views/Production/Manager/ShowProjects.cshtml", projects);
+        }
+        [HttpPost]
+        [Route("/dashboard/production/manager/find-description")]
+        public IActionResult FindDescription(string description)
+        {
+
+            var projects = _appDbContext.Products.Where(u => u.DescriptionProduction == description).ToList();
+            ViewBag.Message = "Brak rekordów w bazie danych, sprawdź pisownię.";
+
+            return View("~/Views/Production/Manager/ShowProjects.cshtml", projects);
+        }
+        [HttpPost]
+        [Route("/dashboard/production/manager/find-person-name")]
+        public IActionResult FindPersonName(string personName)
+        {
+
+            var projects = _appDbContext.Products.Where(u => u.ProductionWorkerAssigned1 == personName || u.ProductionWorkerAssigned2 == personName || u.ProductionWorkerAssigned3 == personName).ToList();
+            ViewBag.Message = "Brak rekordów w bazie danych, sprawdź pisownię.";
+
+            return View("~/Views/Production/Manager/ShowProjects.cshtml", projects);
         }
     }
 }

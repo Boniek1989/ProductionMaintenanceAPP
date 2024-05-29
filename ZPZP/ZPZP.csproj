@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Production\Worker\**" />
-    <Content Remove="Views\Production\Worker\**" />
-    <EmbeddedResource Remove="Views\Production\Worker\**" />
-    <None Remove="Views\Production\Worker\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -26,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Views\Production\Worker\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
 

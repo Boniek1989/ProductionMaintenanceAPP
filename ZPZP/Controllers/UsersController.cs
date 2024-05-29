@@ -47,11 +47,11 @@ namespace ZPZP.Controllers
                 switch (dropdown)
                 {
                     case "produkcja":
-                        return View("~/Views/Production/AdminDashboard.cshtml");
+                        return View("~/Views/Production/Manager/AdminDashboard.cshtml");
                     case "jakość":
-                        return View("~/Views/Quality/AdminDashboard.cshtml");
+                        return View("~/Views/Quality/Manager/AdminDashboard.cshtml");
                     case "logistyka":
-                        return View("~/Views/Logistics/AdminDashboard.cshtml");
+                        return View("~/Views/Logistics/Manager/AdminDashboard.cshtml");
                     default:
                         return RedirectToAction("Index");
                 }
@@ -64,11 +64,11 @@ namespace ZPZP.Controllers
                 switch (dropdown)
                 {
                     case "produkcja":
-                        return View("~/Views/Production/WorkerDashboard.cshtml");
+                        return View("~/Views/Production/Worker/WorkerDashboard.cshtml");
                     case "jakość":
-                        return View("~/Views/Quality/WorkerDashboard.cshtml");
+                        return View("~/Views/Quality/Worker/WorkerDashboard.cshtml");
                     case "logistyka":
-                        return View("~/Views/Logistics/WorkerDashboard.cshtml");
+                        return View("~/Views/Logistics/Worker/WorkerDashboard.cshtml");
                     default:
                         return RedirectToAction("Index");
                 }
@@ -101,13 +101,13 @@ namespace ZPZP.Controllers
         //     return Ok(user);
         //  }
         
-        [Route("settings")]
+        [Route("/dashboard/production/manager/settings")]
         public IActionResult Settings ()
         {
             if (TempData["ID"] != null)
             {
                 ViewBag.ID = TempData["ID"];
-                return View("~/Views/Production/AdminSettings.cshtml");
+                return View("~/Views/Production/Manager/AdminSettings.cshtml");
             }
             else
 
@@ -116,7 +116,7 @@ namespace ZPZP.Controllers
         }
 
         [HttpPost]
-        [Route("settings-password")]
+        [Route("/dashboard/production/manager/settings-password")]
         public async Task<IActionResult> EditPassword(string newPwd, int userID)
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(u => u.ID == userID);
@@ -130,7 +130,7 @@ namespace ZPZP.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
         [HttpPost]
-        [Route("settings-image")]
+        [Route("/proudction/manager/settings-image")]
         public async Task<IActionResult> EditImage(IFormFile file, int userID)
         {
             if (file == null || file.Length == 0)
